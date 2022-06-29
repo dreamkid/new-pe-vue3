@@ -14,29 +14,38 @@
         <div class="tip-text font-20">Mirror guide</div>
         <div class="tip-text font-10">common problem</div>
     </div>
-    <div class="swiper mr-t-37">
-        <div class="item">
-            <img class="item-img item-1" src="../../assets/images/icon_picture.png" alt="">
+    <div class="list">
+        <!-- <div class="swiper mr-t-37 clearfix"> -->
+        <swiper-wrap>
+            <swiper-item theme='purple' icon='picture'></swiper-item>
+            <swiper-item theme='white' icon="book"></swiper-item>
+            <swiper-item theme='lavender' icon='picture'></swiper-item>
+            <swiper-item theme='lavender' icon='picture'></swiper-item>
+        </swiper-wrap>
+        <!-- <div class="item back-color-purple">
+                <img class="item-img item-1" src="../../assets/images/icon_picture.png" alt="">
 
-            <div class="font-15  mr-t-20 font-color-white">Picture</div>
-            <div class="font-10  mr-t-9 font-color-purple">Local screencast</div>
-        </div>
-        <div class="item">
-            <img class="item-img item-2" src="../../assets/images/icon_book.png" alt="">
-            <div class="font-15 mr-t-20 font-color-black">file</div>
-            <div class="font-10 mr-t-9 font-color-gray">Local document</div>
-        </div>
-        <div class="item">
-            <img class="item-img item-3" src="../../assets/images/icon_picture.png" alt="">
-            <div class="font-15 mr-t-20 font-color-gray">Picture</div>
-            <div class="font-10 mr-t-9 font-color-black">Local screencast</div>
-        </div>
-        <div class="item">
-            <img class="item-img item-1" src="../../assets/images/icon_picture.png" alt="">
-            <div class="font-15 mr-t-20 font-color-black">Picture</div>
-            <div class="font-10  mr-t-9 font-color-black">Local screencast</div>
-        </div>
+                <div class="font-15  mr-t-20 font-color-white">Picture</div>
+                <div class="font-10  mr-t-9 font-color-purple">Local screencast</div>
+            </div>
+            <div class="item back-color-white">
+                <img class="item-img item-2" src="../../assets/images/icon_book.png" alt="">
+                <div class="font-15 mr-t-20 font-color-black">file</div>
+                <div class="font-10 mr-t-9 font-color-gray">Local document</div>
+            </div>
+            <div class="item back-color-lavender">
+                <img class="item-img item-3" src="../../assets/images/icon_picture.png" alt="">
+                <div class="font-15 mr-t-20 font-color-gray">Picture</div>
+                <div class="font-10 mr-t-9 font-color-black">Local screencast</div>
+            </div>
+            <div class="item back-color-purple">
+                <img class="item-img item-1" src="../../assets/images/icon_picture.png" alt="">
+                <div class="font-15 mr-t-20 font-color-black">Picture</div>
+                <div class="font-10  mr-t-9 font-color-black">Local screencast</div>
+            </div> -->
+        <!-- </div> -->
     </div>
+
     <div class="foot  warp mr-t-37">
         <div class="foot-top  flex-between">
             <img class="foot-top-img" src="../../assets/images/yuan1.png" alt="">
@@ -57,7 +66,73 @@
 </div>
 </template>
 
+<script>
+import {
+    Scroll
+} from '../../assets/utils'
+import SwiperItem from '../../components/SwiperItem.vue';
+export default {
+    data(){
+        return{
+// data:[{
+//     icon:'picture',
+//     title:,
+//     desc:,
+//     theme:'purple',
+// },{
+//     icon:'book',
+//     title:,
+//     desc:,
+//     theme,
+// },{
+//     icon:'picture',
+//     title:,
+//     desc:,
+//     theme,
+// },{
+//     icon:'picture',
+//     title:,
+//     desc:,
+//     theme,
+// }]
+        }
+    },
+    components: {
+        SwiperItem
+    },
+    created() {
+        console.log(Scroll);
+    },
+    mounted() {
+        this.$nextTick(() => {
+            let scroll = new Scroll({
+                el: '.list',
+                wrap: '.swiper',
+                item: '.item'
+            })
+            scroll.init();
+        })
+    }
+}
+</script>
+
 <style scoped>
+.item {
+    text-align: center;
+    padding: 2.7rem 0;
+    border-radius: 3rem;
+}
+
+.item-img {
+    display: block;
+    width: 6.2rem;
+    height: 6.2rem;
+    padding: 1.6rem;
+    box-sizing: border-box;
+    border-radius: 1.5rem;
+    margin: 0 auto;
+}
+
 ::-webkit-scrollbar {
     display: none;
 }
@@ -138,86 +213,6 @@ input::-webkit-input-placeholder {
 
 .tip-text {
     padding-left: 13.2rem;
-}
-
-.swiper {
-    padding: 0 2rem;
-    overflow-x: scroll;
-    display: flex;
-    /* box-sizing: border-box; */
-    /* gap: 0 1.6rem;
-    -ms-gap: 0 1.6rem;
-    -webkit-gap: 0 1.6rem;
-   -moz-gap: 0 1.6rem;
-   -o-gap:0 1.6rem; */
-}
-
-.item:nth-child(1) {
-    background-color: #7469fb;
-}
-
-.item:nth-child(2) {
-    background-color: white;
-}
-
-.item:nth-child(3) {
-    background-color: #eceaff;
-}
-
-.item:nth-child(4) {
-    background-color: #7469fb;
-}
-
-.item:last-of-type{
-    margin:0 !important;
-}
-
-.item {
-    min-width: 13.4rem;
-    padding: 2.7rem 0;
-    text-align: center;
-    border-radius: 3rem;
-    box-sizing: border-box;
-    margin-right: 0.8rem;
-
-}
-
-.item-img {
-    display: block;
-    width: 6.2rem;
-    height: 6.2rem;
-    padding: 1.6rem;
-    box-sizing: border-box;
-    border-radius: 1.5rem;
-    margin: 0 auto;
-}
-
-.item-1 {
-    background-color: #d2d3ff;
-}
-
-.item-2 {
-    background-color: #ffebdc;
-}
-
-.item-3 {
-    background-color: #bcbafc;
-}
-
-.font-color-white {
-    color: #ebebff;
-}
-
-.font-color-purple {
-    color: #8c84fd;
-}
-
-.font-color-black {
-    color: #445068;
-}
-
-.font-color-gray {
-    color: #a6acb9;
 }
 
 .foot {
